@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/ship */ \"./src/modules/ship.js\");\n\n\n\n\n\nconst destroyer = (0,_modules_ship__WEBPACK_IMPORTED_MODULE_1__.ship)(5);\n\nconsole.log(typeof destroyer);\n\nconsole.log(destroyer.getShip());\n\ndestroyer.hit(3);\nconsole.log(destroyer.getShip());\ndestroyer.hit(1);\nconsole.log(destroyer.getShip());\nconsole.log(destroyer.isSunk());\ndestroyer.hit(0);\ndestroyer.hit(2);\ndestroyer.hit(4);\nconsole.log(destroyer.getShip());\nconsole.log(destroyer.isSunk());\n\nconsole.log(destroyer.length);\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/ship.js":
+/*!*****************************!*\
+  !*** ./src/modules/ship.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ship\": () => (/* binding */ ship)\n/* harmony export */ });\n\n\n// Create ship factory function\nconst ship = (length) => {\n  const shipArray = new Array(length).fill(\"\");\n\n  const getShip = () => shipArray;\n\n  const getLength = () => shipArray.length;\n\n  const hit = (pos) => {\n    if (shipArray[pos]) return;\n    shipArray[pos] = \"x\";\n  };\n\n  const isSunk = () => {\n    return shipArray.every((el) => el === \"x\");\n  };\n\n  return { getShip, getLength, hit, isSunk };\n};\n\n\n\n\n//# sourceURL=webpack://battleship/./src/modules/ship.js?");
 
 /***/ })
 
