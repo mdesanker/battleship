@@ -3,6 +3,8 @@
 // Create ship factory function
 const Ship = (length) => {
   const shipArray = new Array(length).fill("");
+  // const hits = [];
+  // const positions = [];
 
   const getShip = () => shipArray;
 

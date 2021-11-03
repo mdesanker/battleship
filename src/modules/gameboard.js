@@ -22,33 +22,51 @@ const Gameboard = () => {
 
   // Store coordinates of ships placed on board
   const shipCoords = [];
+
+  // Store coordinates of attacks by opponent
   const attacks = [];
 
   // Place ships on board
   const placeShip = (ship, dir, coords) => {
+    // Determine coords of new ship
+    const newCoords = [];
     for (let i = 0; i < ship.getLength(); i++) {
-      // board[coords[1]][coords[0] + i] = "*";
-      shipCoords.push(
-        dir === "h" ? [coords[1], coords[0] + i] : [coords[1] + i, coords[0]]
+      newCoords.push(
+        dir === "h" ? [coords[0] + i, coords[1]] : [coords[0], coords[1] + i]
       );
     }
-    console.log(shipCoords);
+    console.log("newCoords", newCoords);
+    console.log("shipCoords", shipCoords);
+
+    // Filter list of existing coords down to overlap with new ship and check if any
+    const shipStr = JSON.stringify(shipCoords);
+    if (
+      newCoords.filter((coord) => shipStr.includes(JSON.stringify(coord)))
+        .length > 0
+    )
+      return;
+
+    // Add coordinates to array depending on orientation
+    for (let i = 0; i < ship.getLength(); i++) {
+      shipCoords.push(
+        dir === "h" ? [coords[0] + i, coords[1]] : [coords[0], coords[1] + i]
+      );
+    }
+    displayShips();
   };
 
-  // Display ship positions on board
   const displayShips = () => {
     shipCoords.forEach((coord) => {
       board[coord[1]][coord[0]] = "*";
     });
   };
 
-  // Receive attacks on board
   const receiveAttack = (coords) => {
     board[coords[1]][coords[0]] = "x";
-    attacks.push([coords[1], coords[0]]);
+    attacks.push(coords);
   };
 
-  return { placeShip, receiveAttack, printBoard, displayShips };
+  return { placeShip, receiveAttack, printBoard };
 };
 
 export { Gameboard };
