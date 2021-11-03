@@ -17,7 +17,8 @@ const Gameboard = () => {
   ];
 
   const printBoard = () => {
-    console.log(board);
+    // console.log(board);
+    return board;
   };
 
   // Store coordinates of ships placed on board
@@ -66,7 +67,11 @@ const Gameboard = () => {
     attacks.push(coords);
   };
 
-  return { placeShip, receiveAttack, printBoard };
+  const getShipCoords = () => {
+    return shipCoords;
+  };
+
+  return { placeShip, receiveAttack, printBoard, getShipCoords };
 };
 
 export { Gameboard };

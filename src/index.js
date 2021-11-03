@@ -6,7 +6,7 @@ import { Gameboard } from "./modules/gameboard";
 
 const board = Gameboard();
 
-board.printBoard();
+console.log(board.printBoard());
 
 const carrier = Ship(5);
 const battleship = Ship(4);
