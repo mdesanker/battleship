@@ -1,8 +1,12 @@
 "use strict";
 
 import { Ship } from "./modules/ship";
+import Gameboard from "./modules/gameboard";
+
+////////////////////////////////////////////////////////////
 
 // Testing ship factory
+
 test("test that ship factory produces ship of correct length", () => {
   // given
   const testShip = Ship(3);
@@ -62,3 +66,7 @@ test("test that ship factory reports when not sunk", () => {
   //then
   expect(result).toEqual(false);
 });
+
+////////////////////////////////////////////////
+
+// Testing Gameboard factory
