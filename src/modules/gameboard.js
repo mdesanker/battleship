@@ -17,7 +17,6 @@ const Gameboard = () => {
   ];
 
   const printBoard = () => {
-    // console.log(board);
     return board;
   };
 
@@ -25,7 +24,8 @@ const Gameboard = () => {
   const shipCoords = [];
 
   // Store coordinates of attacks by opponent
-  const attacks = [];
+  const hits = [];
+  const misses = [];
 
   const placeShip = (ship, dir, coords) => {
     // Determine coords of new ship
@@ -63,8 +63,22 @@ const Gameboard = () => {
   };
 
   const receiveAttack = (coords) => {
-    board[coords[1]][coords[0]] = "x";
-    attacks.push(coords);
+    board[coords[1]][coords[0]] = "O";
+    const shipCoordStr = JSON.stringify(shipCoords);
+    if (shipCoordStr.includes(JSON.stringify(coords))) {
+      hits.push(coords);
+    } else misses.push(coords);
+
+    console.log("hits", hits);
+    console.log("misses", misses);
+
+    // showAttack();
+  };
+
+  const showAttack = () => {
+    hits.forEach((coord) => {
+      board[coord[1]][coord[0]] = "O";
+    });
   };
 
   const getShipCoords = () => {

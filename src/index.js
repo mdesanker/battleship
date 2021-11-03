@@ -19,3 +19,7 @@ board.placeShip(carrier, "v", [5, 2]); // Overlaps with battleship
 board.placeShip(carrier, "v", [1, 2]);
 board.placeShip(destroyer, "v", [8, 7]);
 board.placeShip(destroyer, "v", [5, 8]); // Extends outside edge of board
+
+board.receiveAttack([0, 0]);
+board.receiveAttack([3, 4]);
+board.receiveAttack([6, 4]);
