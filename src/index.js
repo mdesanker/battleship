@@ -13,3 +13,4 @@ const battleship = Ship(4);
 
 board.placeShip(battleship, "h", [3, 4]);
 board.placeShip(carrier, "v", [5, 2]);
+board.placeShip(carrier, "v", [1, 2]);

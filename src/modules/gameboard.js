@@ -26,32 +26,27 @@ const Gameboard = () => {
   // Store coordinates of attacks by opponent
   const attacks = [];
 
-  // Place ships on board
   const placeShip = (ship, dir, coords) => {
     // Determine coords of new ship
-    const newCoords = [];
+    const newShipCoords = [];
     for (let i = 0; i < ship.getLength(); i++) {
-      newCoords.push(
+      newShipCoords.push(
         dir === "h" ? [coords[0] + i, coords[1]] : [coords[0], coords[1] + i]
       );
     }
-    console.log("newCoords", newCoords);
-    console.log("shipCoords", shipCoords);
 
-    // Filter list of existing coords down to overlap with new ship and check if any
-    const shipStr = JSON.stringify(shipCoords);
+    // Check for coordinate overlap with existing ships
+    const shipCoordStr = JSON.stringify(shipCoords);
     if (
-      newCoords.filter((coord) => shipStr.includes(JSON.stringify(coord)))
-        .length > 0
+      newShipCoords.filter((coord) =>
+        shipCoordStr.includes(JSON.stringify(coord))
+      ).length > 0
     )
       return;
 
-    // Add coordinates to array depending on orientation
-    for (let i = 0; i < ship.getLength(); i++) {
-      shipCoords.push(
-        dir === "h" ? [coords[0] + i, coords[1]] : [coords[0], coords[1] + i]
-      );
-    }
+    // Add coordinates of new ship to shipCoords
+    shipCoords.push(...newShipCoords);
+
     displayShips();
   };
 
