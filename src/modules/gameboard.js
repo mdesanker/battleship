@@ -35,6 +35,11 @@ const Gameboard = () => {
       );
     }
 
+    // Check for coordinate overlap with edge of board
+    for (let coord of newShipCoords) {
+      if (coord.some((el) => el < 0 || el > 9)) return;
+    }
+
     // Check for coordinate overlap with existing ships
     const shipCoordStr = JSON.stringify(shipCoords);
     if (
