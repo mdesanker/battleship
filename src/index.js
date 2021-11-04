@@ -3,41 +3,55 @@
 import "./style.css";
 import { Ship } from "./modules/ship";
 import { Gameboard } from "./modules/gameboard";
+import { Player } from "./modules/player";
 
-const board = Gameboard();
+// Battleship game loop
+let isGameOver = false;
+while (!isGameOver) {
+  // Create player objects
+  const player = Player("Human");
+  const computer = Player("Computer");
+  let round = 0;
 
-// Create ships for each board
-const carrier = Ship(5);
-const battleship = Ship(4);
-const destroyer = Ship(3);
-const submarine = Ship(3);
-const patrol = Ship(2);
+  // Alternate player with each round
+  let currentPlayer = round % 2 === 0 ? player : computer;
+  // console.log(currentPlayer.getName());
 
-board.placeShipRandom(carrier);
-board.placeShipRandom(battleship);
-board.placeShipRandom(destroyer);
-board.placeShipRandom(submarine);
-board.placeShipRandom(patrol);
+  // Create board objects
+  const playerBoard = Gameboard();
+  const computerBoard = Gameboard();
 
-// board.placeShip(carrier, "v", [3, 3]);
-// board.placeShip(battleship, "h", [1, 8]);
-// placeShip(destroyer, "v", [8, 5]);
-// board.placeShip(submarine, "v", [5, 5]);
-// board.placeShip(patrol, "h", [1, 1]);
+  playerBoard.placeShipsRandom(player.getShips());
 
-// console.log("carrier", carrier.getPosition());
-// console.log("battleship", battleship.getPosition());
-// console.log("destroyer", destroyer.getPosition());
-// console.log("sub", submarine.getPosition());
-// console.log("patrol", patrol.getPosition());
+  console.log(player.getShip("carrier").getPosition());
 
-// board.receiveAttack([8, 8]);
-// board.receiveAttack([1, 1]);
-// board.receiveAttack([1, 1]);
-// board.receiveAttack([2, 1]);
-// board.receiveAttack([5, 5]);
-// board.receiveAttack([5, 6]);
-// board.receiveAttack([5, 6]);
-// board.receiveAttack([5, 7]);
+  // player.getShips().forEach((ship) => {
+  //   console.log(ship.getPosition());
+  // });
 
-// console.log(board.checkAllShipsSunk());
+  // // Computer place ships on boards
+  // const cCarrier = Ship(5);
+  // const cBattleship = Ship(4);
+  // const cDestroyer = Ship(3);
+  // const cSubmarine = Ship(3);
+  // const cPatrol = Ship(2);
+
+  // const cShips = [cCarrier, cBattleship, cDestroyer, cSubmarine, cPatrol];
+
+  // console.log("Computer ships");
+  // computerBoard.placeShipsRandom(cShips);
+
+  // // Player place ships on boards
+  // const pCarrier = Ship(5);
+  // const pBattleship = Ship(4);
+  // const pDestroyer = Ship(3);
+  // const pSubmarine = Ship(3);
+  // const pPatrol = Ship(2);
+
+  // const pShips = [pCarrier, pBattleship, pDestroyer, pSubmarine, pPatrol];
+
+  // console.log("Player ships");
+  // playerBoard.placeShipsRandom(pShips);
+
+  isGameOver = true;
+}

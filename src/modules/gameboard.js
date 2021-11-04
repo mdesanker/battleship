@@ -44,17 +44,19 @@ const Gameboard = () => {
     ships.push(ship);
   };
 
-  const placeShipRandom = (ship) => {
-    let shipPlaced = false;
-    while (!shipPlaced) {
-      const dir = getRandomDir();
-      const coords = getRandomCoord();
-      placeShip(ship, dir, coords);
-      if (ships.includes(ship)) {
-        shipPlaced = true;
+  const placeShipsRandom = (shipArr) => {
+    shipArr.forEach((ship) => {
+      let shipPlaced = false;
+      while (!shipPlaced) {
+        const dir = getRandomDir();
+        const coords = getRandomCoord();
+        placeShip(ship, dir, coords);
+        if (ships.includes(ship)) {
+          shipPlaced = true;
+        }
       }
-    }
-    console.log(JSON.stringify(ship.getPosition()));
+      // console.log(JSON.stringify(ship.getPosition()));
+    });
   };
 
   const receiveAttack = (coords) => {
@@ -91,7 +93,7 @@ const Gameboard = () => {
     placeShip,
     receiveAttack,
     checkAllShipsSunk,
-    placeShipRandom,
+    placeShipsRandom,
   };
 };
 

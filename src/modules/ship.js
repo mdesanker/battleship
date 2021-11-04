@@ -1,11 +1,12 @@
 "use strict";
 
 // Create ship factory function
-const Ship = (length) => {
+const Ship = (length, name) => {
   let hits = [];
   let position = [];
 
   const getLength = () => length;
+  const getName = () => name;
 
   const setPosition = (coords) => {
     position = coords;
@@ -27,7 +28,7 @@ const Ship = (length) => {
     return position.length === hits.length;
   };
 
-  return { getLength, hit, getHits, isSunk, setPosition, getPosition };
+  return { getLength, getName, hit, getHits, isSunk, setPosition, getPosition };
 };
 
 export { Ship };
