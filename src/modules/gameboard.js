@@ -5,6 +5,14 @@ const Gameboard = () => {
   const ships = [];
   const misses = [];
 
+  const getRandomCoord = () => {
+    return [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
+  };
+
+  const getRandomDir = () => {
+    return Math.floor(Math.random() * 2) === 1 ? "h" : "v";
+  };
+
   const placeShip = (ship, dir, coords) => {
     // Determine coords of new ship with dir and length
     const newShipCoords = [];
@@ -33,6 +41,19 @@ const Gameboard = () => {
     // Set position of ship
     ship.setPosition(newShipCoords);
     ships.push(ship);
+  };
+
+  const placeShipRandom = (ship) => {
+    let shipPlaced = false;
+    while (!shipPlaced) {
+      const dir = getRandomDir();
+      const coords = getRandomCoord();
+      placeShip(ship, dir, coords);
+      if (ships.includes(ship)) {
+        shipPlaced = true;
+      }
+    }
+    console.log(JSON.stringify(ship.getPosition()));
   };
 
   const receiveAttack = (coords) => {
@@ -66,6 +87,7 @@ const Gameboard = () => {
     placeShip,
     receiveAttack,
     checkAllShipsSunk,
+    placeShipRandom,
   };
 };
 
