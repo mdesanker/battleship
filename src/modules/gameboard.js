@@ -4,6 +4,7 @@
 const Gameboard = () => {
   const ships = [];
   const misses = [];
+  const attacks = [];
 
   const getRandomCoord = () => {
     return [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
@@ -57,6 +58,7 @@ const Gameboard = () => {
   };
 
   const receiveAttack = (coords) => {
+    if (JSON.stringify(attacks).includes(JSON.stringify(coords))) return;
     const currentCoords = JSON.stringify(
       ships.flatMap((ship) => ship.getPosition())
     );
@@ -65,6 +67,7 @@ const Gameboard = () => {
         const shipCoords = JSON.stringify(ship.getPosition());
         if (shipCoords.includes(JSON.stringify(coords))) {
           ship.hit(coords);
+          attacks.push(coords);
           // console.log("hits", ship.getHits());
           // console.log("sunk?", ship.isSunk());
           console.log("all ships sunk?", checkAllShipsSunk());
@@ -72,6 +75,7 @@ const Gameboard = () => {
       });
     } else {
       misses.push(coords);
+      attacks.push(coords);
       console.log("misses", misses);
     }
   };

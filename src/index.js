@@ -16,6 +16,8 @@ const patrol = Ship(2);
 board.placeShipRandom(carrier);
 board.placeShipRandom(battleship);
 board.placeShipRandom(destroyer);
+board.placeShipRandom(submarine);
+board.placeShipRandom(patrol);
 
 // board.placeShip(carrier, "v", [3, 3]);
 // board.placeShip(battleship, "h", [1, 8]);
@@ -31,8 +33,10 @@ board.placeShipRandom(destroyer);
 
 // board.receiveAttack([8, 8]);
 // board.receiveAttack([1, 1]);
+// board.receiveAttack([1, 1]);
 // board.receiveAttack([2, 1]);
 // board.receiveAttack([5, 5]);
+// board.receiveAttack([5, 6]);
 // board.receiveAttack([5, 6]);
 // board.receiveAttack([5, 7]);
 
