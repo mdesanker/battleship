@@ -3,12 +3,20 @@
 // Create ship factory function
 const Ship = (length) => {
   const shipArray = new Array(length).fill("");
-  // const hits = [];
-  // const positions = [];
+  let hits = [];
+  let position = [];
 
   const getShip = () => shipArray;
 
-  const getLength = () => shipArray.length;
+  const getLength = () => length;
+
+  const setPosition = (coords) => {
+    position = coords;
+  };
+
+  const getPosition = () => {
+    return position;
+  };
 
   const hit = (pos) => {
     if (shipArray[pos] || pos < 0 || pos >= shipArray.length) return;
@@ -19,7 +27,7 @@ const Ship = (length) => {
     return shipArray.every((el) => el === "x");
   };
 
-  return { getShip, getLength, hit, isSunk };
+  return { getShip, getLength, hit, isSunk, setPosition, getPosition };
 };
 
 export { Ship };
