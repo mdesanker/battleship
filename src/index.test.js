@@ -70,7 +70,7 @@ test.skip("test that ship factory reports when not sunk", () => {
 ////////////////////////////////////////////////
 
 // Testing Gameboard factory
-test("can place ships within 10 x 10 gameboard", () => {
+test("can place ships on gameboard", () => {
   // given
   const board = Gameboard();
   const carrier = Ship(5);
@@ -81,6 +81,19 @@ test("can place ships within 10 x 10 gameboard", () => {
 
   // then
   expect(result).toBeGreaterThan(0);
+});
+
+test("can't place ships outside 10 x 10 gameboard", () => {
+  // given
+  const board = Gameboard();
+  const carrier = Ship(5);
+  board.placeShip(carrier, "v", [11, 15]);
+
+  // when
+  const result = carrier.getPosition().length;
+
+  // then
+  expect(result).toEqual(0);
 });
 
 test("can't place ships off edge of gameboard", () => {
@@ -109,4 +122,48 @@ test("can't place overlapping ships", () => {
 
   // then
   expect(result).toEqual(0);
+});
+
+test("hits are stored on ship object", () => {
+  // given
+  const board = Gameboard();
+  const carrier = Ship(5);
+  board.placeShip(carrier, "v", [3, 3]);
+  board.receiveAttack([3, 5]);
+
+  // when
+
+  const result = carrier.getHits().length;
+
+  // then
+  expect(result).toBeGreaterThan(0);
+});
+
+test("checksAllShipsSunk returns false if not all ships sunk", () => {
+  // given
+  const board = Gameboard();
+  const patrol = Ship(2);
+  board.placeShip(patrol, "v", [3, 3]);
+  board.receiveAttack([3, 3]);
+
+  // when
+  const result = board.checkAllShipsSunk();
+
+  // then
+  expect(result).toBeFalsy();
+});
+
+test("checksAllShipsSunk returns true if all ships sunk", () => {
+  // given
+  const board = Gameboard();
+  const patrol = Ship(2);
+  board.placeShip(patrol, "v", [3, 3]);
+  board.receiveAttack([3, 3]);
+  board.receiveAttack([3, 4]);
+
+  // when
+  const result = board.checkAllShipsSunk();
+
+  // then
+  expect(result).toBeTruthy();
 });
