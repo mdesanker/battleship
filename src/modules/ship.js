@@ -19,15 +19,23 @@ const Ship = (length) => {
   };
 
   const hit = (pos) => {
-    if (shipArray[pos] || pos < 0 || pos >= shipArray.length) return;
-    shipArray[pos] = "x";
+    hits.push(pos);
   };
+
+  const getHits = () => {
+    return hits;
+  };
+
+  // const hit = (pos) => {
+  //   if (shipArray[pos] || pos < 0 || pos >= shipArray.length) return;
+  //   shipArray[pos] = "x";
+  // };
 
   const isSunk = () => {
     return shipArray.every((el) => el === "x");
   };
 
-  return { getShip, getLength, hit, isSunk, setPosition, getPosition };
+  return { getShip, getLength, hit, getHits, isSunk, setPosition, getPosition };
 };
 
 export { Ship };
