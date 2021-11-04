@@ -83,14 +83,22 @@ const Gameboard = () => {
         const shipCoords = JSON.stringify(ship.getPosition());
         if (shipCoords.includes(JSON.stringify(coords))) {
           ship.hit(coords);
-          console.log("hits", ship.getHits());
-          console.log("sunk?", ship.isSunk());
+          // console.log("hits", ship.getHits());
+          // console.log("sunk?", ship.isSunk());
+          console.log("all ships sunk?", checkAllShipsSunk());
         }
       });
     } else {
       misses.push(coords);
       console.log("misses", misses);
     }
+  };
+
+  const checkAllShipsSunk = () => {
+    // Check num sunken ships === num ships
+    return (
+      ships.filter((ship) => ship.isSunk() === true).length === ships.length
+    );
   };
 
   // receiveAttack([3, 3]);
