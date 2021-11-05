@@ -11,11 +11,15 @@ const displayShips = (player) => {
   player.getShips().forEach((ship) => {
     ship.getPosition().forEach((coord) => {
       const grid = playerBoardDisplay.querySelector(
-        `div[data-row="${coord[1]}"] [data-col="${coord[0]}"]`
+        `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
       );
       grid.style.backgroundColor = "gray";
     });
   });
 };
+
+// const playerDisplay = () => {
+
+// }
 
 export { displayShips };

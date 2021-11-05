@@ -60,6 +60,16 @@ while (!isGameOver) {
 
   displayShips(player);
 
+  playerBoardDisplay.addEventListener("click", (e) => {
+    const attack = [
+      Number.parseInt(e.target.dataset.col),
+      Number.parseInt(e.target.dataset.row),
+    ];
+    console.log("attack at", attack);
+
+    playerBoard.receiveAttack(attack);
+  });
+
   // console.log(player.getShips();
 
   // playerBoard.randomAttack();
