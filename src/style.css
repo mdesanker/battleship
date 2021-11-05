@@ -1,1 +1,60 @@
 /* style.css */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 18px;
+  background-color: lightgray;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+header {
+  font-size: 2rem;
+  text-align: center;
+  margin: 40px auto 60px;
+}
+main {
+  display: flex;
+  min-height: 700px;
+  width: 100%;
+  max-width: 1000px;
+}
+.player-container,
+.comp-container {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player-board,
+.computer-board {
+  width: 400px;
+  height: 400px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+}
+.col {
+  border: 1px solid black;
+  background-color: white;
+  height: 40px;
+  width: 40px;
+}
+footer {
+  position: relative;
+  bottom: 0;
+  padding: 10px;
+}
