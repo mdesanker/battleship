@@ -29,8 +29,42 @@ const placeCompShips = (computer) => {
   });
 };
 
-// const playerDisplay = () => {
+const updatePlayerBoard = (board) => {
+  const hitCoords = board.getHits();
+  const missCoords = board.getMisses();
 
-// }
+  hitCoords.forEach((coord) => {
+    const grid = playerBoardDisplay.querySelector(
+      `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
+    );
+    grid.style.backgroundColor = "red";
+  });
 
-export { displayShips, placeCompShips };
+  missCoords.forEach((coord) => {
+    const grid = playerBoardDisplay.querySelector(
+      `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
+    );
+    grid.style.backgroundColor = "blue";
+  });
+};
+
+const updateComputerBoard = (board) => {
+  const hitCoords = board.getHits();
+  const missCoords = board.getMisses();
+
+  hitCoords.forEach((coord) => {
+    const grid = compBoardDisplay.querySelector(
+      `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
+    );
+    grid.style.backgroundColor = "red";
+  });
+
+  missCoords.forEach((coord) => {
+    const grid = compBoardDisplay.querySelector(
+      `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
+    );
+    grid.style.backgroundColor = "blue";
+  });
+};
+
+export { displayShips, placeCompShips, updatePlayerBoard, updateComputerBoard };

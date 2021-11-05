@@ -4,7 +4,12 @@ import "./style.css";
 import { Ship } from "./modules/ship";
 import { Gameboard } from "./modules/gameboard";
 import { Player } from "./modules/player";
-import { displayShips, placeCompShips } from "./display/ui";
+import {
+  displayShips,
+  placeCompShips,
+  updatePlayerBoard,
+  updateComputerBoard,
+} from "./display/ui";
 
 const playRound = (playerBoard, computerBoard) => {
   let round = 0;
@@ -55,25 +60,24 @@ while (!isGameOver) {
 
   // Elements
   const playerBoardDisplay = document.querySelector(".player-board");
-
-  // console.log(player.getShip("carrier").getPosition());
+  const compBoardDisplay = document.querySelector(".comp-board");
 
   displayShips(player);
   placeCompShips(computer);
 
-  playerBoardDisplay.addEventListener("click", (e) => {
+  // Add event listener to computer board
+  compBoardDisplay.addEventListener("click", (e) => {
     const attack = [
       Number.parseInt(e.target.dataset.col),
       Number.parseInt(e.target.dataset.row),
     ];
-    console.log("attack at", attack);
 
-    playerBoard.receiveAttack(attack);
+    computerBoard.receiveAttack(attack);
+    updateComputerBoard(computerBoard);
+
+    playerBoard.randomAttack();
+    updatePlayerBoard(playerBoard);
   });
-
-  // console.log(player.getShips();
-
-  // playerBoard.randomAttack();
 
   isGameOver = true;
   roundTest++;
