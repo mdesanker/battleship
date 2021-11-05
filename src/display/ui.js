@@ -67,4 +67,10 @@ const updateComputerBoard = (board) => {
   });
 };
 
+const checkBoardCleared = (board) => {
+  if (board.checkAllShipsSunk()) {
+    console.log("");
+  }
+};
+
 export { displayShips, placeCompShips, updatePlayerBoard, updateComputerBoard };

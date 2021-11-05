@@ -42,12 +42,9 @@ const playRound = (playerBoard, computerBoard) => {
 let roundTest = 0;
 let isGameOver = false;
 while (!isGameOver) {
-  // while (roundTest <= 10) {
   // Create player objects
   const player = Player("Human");
   const computer = Player("Computer");
-
-  // console.log(currentPlayer.getName());
 
   // Create board objects
   const playerBoard = Gameboard();
@@ -74,11 +71,21 @@ while (!isGameOver) {
 
     computerBoard.receiveAttack(attack);
     updateComputerBoard(computerBoard);
+    if (computerBoard.checkAllShipsSunk()) {
+      // Declare player winner
+      alert("Player wins!");
+    }
 
-    playerBoard.computerAttack();
-    updatePlayerBoard(playerBoard);
+    // Set 1 second timer on computer attack to make it seem more realistic
+    setTimeout(function () {
+      playerBoard.computerAttack();
+      updatePlayerBoard(playerBoard);
+      if (playerBoard.checkAllShipsSunk()) {
+        // Declare computer winner
+        alert("Computer wins!");
+      }
+    }, 100);
   });
 
   isGameOver = true;
-  roundTest++;
 }
