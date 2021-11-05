@@ -5,7 +5,7 @@ const Gameboard = () => {
   const ships = [];
   const misses = [];
   const hits = [];
-  const attacks = [];
+  // const attacks = [];
 
   const getRandomCoord = () => {
     return [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
@@ -62,6 +62,7 @@ const Gameboard = () => {
   };
 
   const receiveAttack = (coords) => {
+    const attacks = misses.concat(hits);
     if (JSON.stringify(attacks).includes(JSON.stringify(coords))) return;
     const currentCoords = JSON.stringify(
       ships.flatMap((ship) => ship.getPosition())
@@ -72,9 +73,8 @@ const Gameboard = () => {
         if (shipCoords.includes(JSON.stringify(coords))) {
           ship.hit(coords);
           hits.push(coords);
-          console.log("hits", hits);
-          // attacks.push(coords);
-          // console.log("hits", ship.getHits());
+          // console.log("hits", hits);
+
           // console.log("sunk?", ship.isSunk());
 
           // console.log("all ships sunk?", checkAllShipsSunk());
@@ -83,21 +83,22 @@ const Gameboard = () => {
     } else {
       misses.push(coords);
       // attacks.push(coords);
-      console.log("misses", misses);
+      // console.log("misses", misses);
     }
   };
 
-  const randomAttack = () => {
+  const computerAttack = () => {
     let coordIsNew = false;
+    const attacks = misses.concat(hits);
     while (!coordIsNew) {
       const randCoord = [
         Math.floor(Math.random() * 10),
         Math.floor(Math.random() * 10),
       ];
       if (!JSON.stringify(attacks).includes(JSON.stringify(randCoord))) {
-        console.log(randCoord);
+        console.log("cpu attacks: ", randCoord);
         receiveAttack(randCoord);
-        console.log("attacks", attacks);
+        // console.log("attacks", attacks);
         coordIsNew = true;
       }
     }
@@ -121,7 +122,7 @@ const Gameboard = () => {
   return {
     placeShip,
     receiveAttack,
-    randomAttack,
+    computerAttack,
     checkAllShipsSunk,
     placeShipsRandom,
     getHits,

@@ -75,7 +75,7 @@ while (!isGameOver) {
     computerBoard.receiveAttack(attack);
     updateComputerBoard(computerBoard);
 
-    playerBoard.randomAttack();
+    playerBoard.computerAttack();
     updatePlayerBoard(playerBoard);
   });
 
