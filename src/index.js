@@ -27,6 +27,14 @@ const DisplayController = (() => {
   // Elements
   const playerBoardDisplay = document.querySelector(".player-board");
   const compBoardDisplay = document.querySelector(".comp-board");
+  const gameOverModal = document.querySelector(".game-over");
+  const restartBtn = document.querySelector(".again-btn");
+  const winner = document.querySelector(".winner");
+
+  // Functions
+  const toggleGameOverModal = () => {
+    gameOverModal.classList.toggle("hide");
+  };
 
   displayPlayerShips(player);
   displayCompShips(computer);
@@ -46,8 +54,8 @@ const DisplayController = (() => {
       if (computerBoard.checkAllShipsSunk()) {
         gameIsOver = true;
         // Declare player winner
-
-        alert("Player wins!");
+        winner.textContent = `${player.getName()}`;
+        toggleGameOverModal();
       }
     }
 
@@ -58,15 +66,14 @@ const DisplayController = (() => {
         updatePlayerBoard(playerBoard);
         if (playerBoard.checkAllShipsSunk()) {
           // Declare computer winner
-          alert("Computer wins!");
+          winner.textContent = `${computer.getName()}`;
+          toggleGameOverModal();
         }
       }, 100);
     }
   });
 
-  const header = document.querySelector("h1");
-
-  header.addEventListener("click", () => {
+  restartBtn.addEventListener("click", () => {
     player.resetShips();
     computer.resetShips();
     playerBoard.resetPlayerBoard();
@@ -75,6 +82,8 @@ const DisplayController = (() => {
     computerBoard.placeShipsRandom(computer.getShips());
     displayPlayerShips(player);
     displayCompShips(computer);
+
+    toggleGameOverModal();
 
     gameIsOver = false;
   });
