@@ -5,6 +5,8 @@ import { Ship } from "./modules/ship";
 import { Gameboard } from "./modules/gameboard";
 import { Player } from "./modules/player";
 
+const updateDisplay = (player) => {};
+
 const playRound = (playerBoard, computerBoard) => {
   let round = 0;
 
@@ -52,11 +54,23 @@ while (!isGameOver) {
 
   // playRound(playerBoard, computerBoard);
 
+  // Elements
+  const playerBoardDisplay = document.querySelector(".player-board");
+
   // console.log(player.getShip("carrier").getPosition());
 
+  // Display ships on board
   player.getShips().forEach((ship) => {
-    // console.log(ship.getPosition());
+    ship.getPosition().forEach((coord) => {
+      const row = playerBoardDisplay.querySelector(
+        `div[data-row="${coord[1]}"]`
+      );
+      const col = row.querySelector(`div[data-col="${coord[0]}"]`);
+      col.style.backgroundColor = "gray";
+    });
   });
+
+  // console.log(player.getShips();
 
   // playerBoard.randomAttack();
 

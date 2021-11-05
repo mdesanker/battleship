@@ -55,7 +55,8 @@ const Gameboard = () => {
           shipPlaced = true;
         }
       }
-      console.log(JSON.stringify(ship.getPosition()));
+      console.log(ship.getPosition());
+      // console.log(JSON.stringify(ship.getPosition()));
     });
   };
 
