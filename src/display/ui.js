@@ -2,6 +2,20 @@
 
 import { Player } from "../modules/player";
 
-const updateDisplay = () => {};
+// Elements
+const playerBoardDisplay = document.querySelector(".player-board");
+const compBoardDisplay = document.querySelector(".comp-board");
 
-export { updateDisplay };
+// Functions
+const displayShips = (player) => {
+  player.getShips().forEach((ship) => {
+    ship.getPosition().forEach((coord) => {
+      const grid = playerBoardDisplay.querySelector(
+        `div[data-row="${coord[1]}"] [data-col="${coord[0]}"]`
+      );
+      grid.style.backgroundColor = "gray";
+    });
+  });
+};
+
+export { displayShips };
