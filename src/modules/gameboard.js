@@ -119,6 +119,10 @@ const Gameboard = () => {
     return misses;
   };
 
+  const shipsOnBoard = () => {
+    return ships.length;
+  };
+
   const resetPlayerBoard = () => {
     document.querySelectorAll(".player-board .col").forEach((el) => {
       el.style.backgroundColor = "white";
@@ -147,6 +151,7 @@ const Gameboard = () => {
     getMisses,
     resetPlayerBoard,
     resetComputerBoard,
+    shipsOnBoard,
   };
 };
 

@@ -5,15 +5,20 @@ import { Player } from "../modules/player";
 // Elements
 const playerBoardDisplay = document.querySelector(".player-board");
 const compBoardDisplay = document.querySelector(".comp-board");
+const placementBoardDisplay = document.querySelector(".placement-board");
 
 // Functions
 const displayPlayerShips = (player) => {
   player.getShips().forEach((ship) => {
     ship.getPosition().forEach((coord) => {
-      const grid = playerBoardDisplay.querySelector(
+      const playerBoard = playerBoardDisplay.querySelector(
         `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
       );
-      grid.style.backgroundColor = "gray";
+      const placementBoard = placementBoardDisplay.querySelector(
+        `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
+      );
+      playerBoard.style.backgroundColor = "gray";
+      placementBoard.style.backgroundColor = "gray";
     });
   });
 };

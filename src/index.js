@@ -24,8 +24,38 @@ const DisplayController = (() => {
   const computerBoard = Gameboard();
 
   // Place ships randomly on both boards
-  playerBoard.placeShipsRandom(player.getShips());
+  // playerBoard.placeShipsRandom(player.getShips());
   computerBoard.placeShipsRandom(computer.getShips());
+
+  // Place player ships manually
+  const placementBoard = document.querySelector(".placement-board");
+  const shipDetails = document.querySelector(".ship-details");
+  console.log(shipDetails.textContent);
+
+  const shipsRemaining = player.getShips();
+
+  let i = 0;
+  shipDetails.textContent = `${player.getShips()[i].getName()} [${player
+    .getShips()
+    [i].getLength()}]`;
+  placementBoard.addEventListener("click", (e) => {
+    const clicked = [
+      Number.parseInt(e.target.dataset.col),
+      Number.parseInt(e.target.dataset.row),
+    ];
+    if (i < player.getShips().length) {
+      // Place next ship in list on player board
+      playerBoard.placeShip(player.getShips()[i], "h", clicked);
+      displayPlayerShips(player);
+      // Verify ship successfully placed on board
+      if (playerBoard.shipsOnBoard() === i + 1) {
+        i++;
+        shipDetails.textContent = `${player.getShips()[i].getName()} [${player
+          .getShips()
+          [i].getLength()}]`;
+      }
+    }
+  });
 
   // Elements
   const playerBoardDisplay = document.querySelector(".player-board");

@@ -9,14 +9,14 @@ const Player = (name) => {
   };
 
   // Create player ships
-  // const carrier = Ship(5, "carrier");
-  // const battleship = Ship(4, "battleship");
-  // const destroyer = Ship(3, "destroyer");
+  const carrier = Ship(5, "carrier");
+  const battleship = Ship(4, "battleship");
+  const destroyer = Ship(3, "destroyer");
   const submarine = Ship(3, "submarine");
-  // const patrol = Ship(2, "patrol");
+  const patrol = Ship(2, "patrol");
 
-  // const ships = [carrier, battleship, destroyer, submarine, patrol];
-  const ships = [submarine];
+  const ships = [carrier, battleship, destroyer, submarine, patrol];
+  // const ships = [submarine];
 
   const getShips = () => {
     return ships;
