@@ -2,9 +2,9 @@
 
 // Gameboard factory
 const Gameboard = () => {
-  const ships = [];
-  const misses = [];
-  const hits = [];
+  let ships = [];
+  let misses = [];
+  let hits = [];
   // const attacks = [];
 
   const getRandomCoord = () => {
@@ -57,7 +57,7 @@ const Gameboard = () => {
         }
       }
       // console.log(ship.getPosition());
-      console.log(JSON.stringify(ship.getPosition()));
+      // console.log(JSON.stringify(ship.getPosition()));
     });
   };
 
@@ -119,7 +119,19 @@ const Gameboard = () => {
     return misses;
   };
 
-  const resetBoard = () => {
+  const resetPlayerBoard = () => {
+    document.querySelectorAll(".player-board .col").forEach((el) => {
+      el.style.backgroundColor = "white";
+    });
+    ships = [];
+    misses = [];
+    hits = [];
+  };
+
+  const resetComputerBoard = () => {
+    document.querySelectorAll(".comp-board .col").forEach((el) => {
+      el.style.backgroundColor = "white";
+    });
     ships = [];
     misses = [];
     hits = [];
@@ -133,7 +145,8 @@ const Gameboard = () => {
     placeShipsRandom,
     getHits,
     getMisses,
-    resetBoard,
+    resetPlayerBoard,
+    resetComputerBoard,
   };
 };
 

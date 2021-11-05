@@ -69,7 +69,13 @@ const DisplayController = (() => {
   header.addEventListener("click", () => {
     player.resetShips();
     computer.resetShips();
-    playerBoard.resetBoard();
-    computerBoard.resetBoard();
+    playerBoard.resetPlayerBoard();
+    computerBoard.resetComputerBoard();
+    playerBoard.placeShipsRandom(player.getShips());
+    computerBoard.placeShipsRandom(computer.getShips());
+    displayPlayerShips(player);
+    displayCompShips(computer);
+
+    gameIsOver = false;
   });
 })();
