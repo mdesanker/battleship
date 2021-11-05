@@ -25,7 +25,11 @@ const Player = (name) => {
     return ships.find((item) => item.getName() === ship);
   };
 
-  return { getName, getShips, getShip };
+  const resetShips = () => {
+    ships.forEach((ship) => ship.reset());
+  };
+
+  return { getName, getShips, getShip, resetShips };
 };
 
 export { Player };

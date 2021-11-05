@@ -7,7 +7,7 @@ const playerBoardDisplay = document.querySelector(".player-board");
 const compBoardDisplay = document.querySelector(".comp-board");
 
 // Functions
-const displayShips = (player) => {
+const displayPlayerShips = (player) => {
   player.getShips().forEach((ship) => {
     ship.getPosition().forEach((coord) => {
       const grid = playerBoardDisplay.querySelector(
@@ -18,7 +18,7 @@ const displayShips = (player) => {
   });
 };
 
-const placeCompShips = (computer) => {
+const displayCompShips = (computer) => {
   computer.getShips().forEach((ship) => {
     ship.getPosition().forEach((coord) => {
       const grid = compBoardDisplay.querySelector(
@@ -73,4 +73,9 @@ const checkBoardCleared = (board) => {
   }
 };
 
-export { displayShips, placeCompShips, updatePlayerBoard, updateComputerBoard };
+export {
+  displayPlayerShips,
+  displayCompShips,
+  updatePlayerBoard,
+  updateComputerBoard,
+};

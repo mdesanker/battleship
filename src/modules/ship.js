@@ -28,7 +28,21 @@ const Ship = (length, name) => {
     return position.length === hits.length;
   };
 
-  return { getLength, getName, hit, getHits, isSunk, setPosition, getPosition };
+  const reset = () => {
+    hits = [];
+    position = [];
+  };
+
+  return {
+    getLength,
+    getName,
+    hit,
+    getHits,
+    isSunk,
+    setPosition,
+    getPosition,
+    reset,
+  };
 };
 
 export { Ship };

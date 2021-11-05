@@ -119,6 +119,12 @@ const Gameboard = () => {
     return misses;
   };
 
+  const resetBoard = () => {
+    ships = [];
+    misses = [];
+    hits = [];
+  };
+
   return {
     placeShip,
     receiveAttack,
@@ -127,6 +133,7 @@ const Gameboard = () => {
     placeShipsRandom,
     getHits,
     getMisses,
+    resetBoard,
   };
 };
 
