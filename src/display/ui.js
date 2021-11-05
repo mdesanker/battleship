@@ -18,8 +18,19 @@ const displayShips = (player) => {
   });
 };
 
+const placeCompShips = (computer) => {
+  computer.getShips().forEach((ship) => {
+    ship.getPosition().forEach((coord) => {
+      const grid = compBoardDisplay.querySelector(
+        `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
+      );
+      grid.style.backgroundColor = "lightblue";
+    });
+  });
+};
+
 // const playerDisplay = () => {
 
 // }
 
-export { displayShips };
+export { displayShips, placeCompShips };

@@ -4,7 +4,7 @@ import "./style.css";
 import { Ship } from "./modules/ship";
 import { Gameboard } from "./modules/gameboard";
 import { Player } from "./modules/player";
-import { displayShips } from "./display/ui";
+import { displayShips, placeCompShips } from "./display/ui";
 
 const playRound = (playerBoard, computerBoard) => {
   let round = 0;
@@ -59,6 +59,7 @@ while (!isGameOver) {
   // console.log(player.getShip("carrier").getPosition());
 
   displayShips(player);
+  placeCompShips(computer);
 
   playerBoardDisplay.addEventListener("click", (e) => {
     const attack = [
