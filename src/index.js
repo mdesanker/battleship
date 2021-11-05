@@ -13,7 +13,10 @@ import {
 
 const DisplayController = (() => {
   // Create player objects
-  const player = Player("Human");
+  // const playerName = prompt("Enter your name:");
+  // const player = Player(playerName);
+
+  const player = Player("Player 1");
   const computer = Player("Computer");
 
   // Create board objects
