@@ -60,6 +60,22 @@ const DisplayController = (() => {
     }
   });
 
+  randomBtn.addEventListener("click", () => {
+    // Clear current ships
+    player.resetShips();
+    playerBoard.resetPlayerBoard();
+    displayPlayerShips(player);
+    i = 0;
+    shipDetails.textContent = `Click to place ${player
+      .getShips()
+      [i].getName()} [${player.getShips()[i].getLength()}]`;
+
+    // Place player ships randomly
+    playerBoard.placeShipsRandom(player.getShips());
+    displayPlayerShips(player);
+    shipDetails.textContent = "Ships placed randomly";
+  });
+
   placementBoard.addEventListener("click", (e) => {
     const clicked = [
       Number.parseInt(e.target.dataset.col),
@@ -142,7 +158,6 @@ const DisplayController = (() => {
     computer.resetShips();
     playerBoard.resetPlayerBoard();
     computerBoard.resetComputerBoard();
-    // playerBoard.placeShipsRandom(player.getShips());
     computerBoard.placeShipsRandom(computer.getShips());
     displayPlayerShips(player);
     displayCompShips(computer);
