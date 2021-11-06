@@ -87,7 +87,6 @@ const Gameboard = () => {
         Math.floor(Math.random() * 10),
       ];
       if (!JSON.stringify(attacks).includes(JSON.stringify(randCoord))) {
-        console.log("cpu attacks: ", randCoord);
         receiveAttack(randCoord);
         coordIsNew = true;
       }
