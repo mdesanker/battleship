@@ -3,8 +3,14 @@
 import { Ship } from "./ship";
 
 const Player = (name) => {
+  let userName = name;
+
   const getName = () => {
-    return name;
+    return userName;
+  };
+
+  const setName = (newName) => {
+    userName = newName;
   };
 
   // Create player ships
@@ -28,7 +34,7 @@ const Player = (name) => {
     ships.forEach((ship) => ship.reset());
   };
 
-  return { getName, getShips, getShip, resetShips };
+  return { getName, setName, getShips, getShip, resetShips };
 };
 
 export { Player };

@@ -12,6 +12,18 @@ import {
 } from "./display/ui";
 
 const DisplayController = (() => {
+  // Title Page
+  // Elements
+  const titlePage = document.querySelector(".title-page");
+  const nameInput = document.querySelector("#name");
+  const startBtn = document.querySelector(".start-game");
+
+  startBtn.addEventListener("click", () => {
+    if (!nameInput.value) return;
+    player.setName(nameInput.value);
+    titlePage.classList.add("hide");
+  });
+
   // Create player objects
   const player = Player("Player 1");
   const computer = Player("Computer");
