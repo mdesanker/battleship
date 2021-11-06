@@ -27,7 +27,8 @@ const displayCompShips = (computer) => {
       const grid = compBoardDisplay.querySelector(
         `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
       );
-      grid.style.backgroundColor = "lightblue";
+      // Make comp ships visible for development
+      // grid.style.backgroundColor = "lightblue";
     });
   });
 };
@@ -40,14 +41,14 @@ const updatePlayerBoard = (board) => {
     const grid = playerBoardDisplay.querySelector(
       `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
     );
-    grid.style.backgroundColor = "red";
+    grid.style.backgroundColor = "crimson";
   });
 
   missCoords.forEach((coord) => {
     const grid = playerBoardDisplay.querySelector(
       `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
     );
-    grid.style.backgroundColor = "blue";
+    grid.style.backgroundColor = "darkturquoise";
   });
 };
 
@@ -59,14 +60,14 @@ const updateComputerBoard = (board) => {
     const grid = compBoardDisplay.querySelector(
       `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
     );
-    grid.style.backgroundColor = "red";
+    grid.style.backgroundColor = "crimson";
   });
 
   missCoords.forEach((coord) => {
     const grid = compBoardDisplay.querySelector(
       `div[data-row="${coord[1]}"][data-col="${coord[0]}"]`
     );
-    grid.style.backgroundColor = "blue";
+    grid.style.backgroundColor = "darkturquoise";
   });
 };
 

@@ -1,7 +1,6 @@
 "use strict";
 
 import "./style.css";
-import { Ship } from "./modules/ship";
 import { Gameboard } from "./modules/gameboard";
 import { Player } from "./modules/player";
 import {
@@ -20,7 +19,7 @@ const DisplayController = (() => {
 
   startBtn.addEventListener("click", () => {
     if (!nameInput.value) return;
-    player.setName(nameInput.value);
+    // player.setName(nameInput.value);
     titlePage.classList.add("hide");
   });
 
