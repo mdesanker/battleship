@@ -28,17 +28,37 @@ const DisplayController = (() => {
   computerBoard.placeShipsRandom(computer.getShips());
 
   // Place player ships manually
+  // Elements
+  const placementModal = document.querySelector(".ship-placer");
   const placementBoard = document.querySelector(".placement-board");
   const shipDetails = document.querySelector(".ship-details");
   const dirToggle = document.querySelector("#direction");
-  console.log(shipDetails.textContent);
+  const randomBtn = document.querySelector(".random");
+  const finishBtn = document.querySelector(".finished");
 
   const shipsRemaining = player.getShips();
+
+  // Functions
+  const togglePlacementModal = () => {
+    placementModal.classList.toggle("hide");
+  };
 
   let i = 0;
   shipDetails.textContent = `Click to place ${player
     .getShips()
     [i].getName()} [${player.getShips()[i].getLength()}]`;
+
+  // Event Listeners
+  finishBtn.addEventListener("click", () => {
+    console.log("FINISHED");
+    if (playerBoard.shipsOnBoard() === 5) {
+      togglePlacementModal();
+      i = 0;
+      shipDetails.textContent = `Click to place ${player
+        .getShips()
+        [i].getName()} [${player.getShips()[i].getLength()}]`;
+    }
+  });
 
   placementBoard.addEventListener("click", (e) => {
     const clicked = [
@@ -67,11 +87,12 @@ const DisplayController = (() => {
     }
   });
 
+  // Play the game
   // Elements
   const playerBoardDisplay = document.querySelector(".player-board");
   const compBoardDisplay = document.querySelector(".comp-board");
   const gameOverModal = document.querySelector(".game-over");
-  const restartBtn = document.querySelector(".again-btn");
+  const restartBtn = document.querySelector(".again");
   const winner = document.querySelector(".winner");
 
   // Functions
@@ -121,12 +142,13 @@ const DisplayController = (() => {
     computer.resetShips();
     playerBoard.resetPlayerBoard();
     computerBoard.resetComputerBoard();
-    playerBoard.placeShipsRandom(player.getShips());
+    // playerBoard.placeShipsRandom(player.getShips());
     computerBoard.placeShipsRandom(computer.getShips());
     displayPlayerShips(player);
     displayCompShips(computer);
 
     toggleGameOverModal();
+    togglePlacementModal();
 
     gameIsOver = false;
   });

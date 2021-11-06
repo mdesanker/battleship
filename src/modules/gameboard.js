@@ -124,7 +124,12 @@ const Gameboard = () => {
   };
 
   const resetPlayerBoard = () => {
+    // Clear player board
     document.querySelectorAll(".player-board .col").forEach((el) => {
+      el.style.backgroundColor = "white";
+    });
+    // Clear placement board
+    document.querySelectorAll(".placement-board .col").forEach((el) => {
       el.style.backgroundColor = "white";
     });
     ships = [];
