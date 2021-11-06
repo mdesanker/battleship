@@ -1,7 +1,5 @@
 "use strict";
 
-import { Player } from "../modules/player";
-
 // Elements
 const playerBoardDisplay = document.querySelector(".player-board");
 const compBoardDisplay = document.querySelector(".comp-board");
@@ -70,12 +68,6 @@ const updateComputerBoard = (board) => {
     );
     grid.style.backgroundColor = "blue";
   });
-};
-
-const checkBoardCleared = (board) => {
-  if (board.checkAllShipsSunk()) {
-    console.log("");
-  }
 };
 
 export {

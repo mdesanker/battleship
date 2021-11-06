@@ -5,7 +5,6 @@ const Gameboard = () => {
   let ships = [];
   let misses = [];
   let hits = [];
-  // const attacks = [];
 
   const getRandomCoord = () => {
     return [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
@@ -53,11 +52,10 @@ const Gameboard = () => {
         const coords = getRandomCoord();
         placeShip(ship, dir, coords);
         if (ships.includes(ship)) {
+          /// Confirm ship placement successful
           shipPlaced = true;
         }
       }
-      // console.log(ship.getPosition());
-      // console.log(JSON.stringify(ship.getPosition()));
     });
   };
 
@@ -73,17 +71,10 @@ const Gameboard = () => {
         if (shipCoords.includes(JSON.stringify(coords))) {
           ship.hit(coords);
           hits.push(coords);
-          // console.log("hits", hits);
-
-          // console.log("sunk?", ship.isSunk());
-
-          // console.log("all ships sunk?", checkAllShipsSunk());
         }
       });
     } else {
       misses.push(coords);
-      // attacks.push(coords);
-      // console.log("misses", misses);
     }
   };
 
@@ -98,7 +89,6 @@ const Gameboard = () => {
       if (!JSON.stringify(attacks).includes(JSON.stringify(randCoord))) {
         console.log("cpu attacks: ", randCoord);
         receiveAttack(randCoord);
-        // console.log("attacks", attacks);
         coordIsNew = true;
       }
     }

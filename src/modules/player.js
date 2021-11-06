@@ -1,6 +1,5 @@
 "use strict";
 
-import { Gameboard } from "./gameboard";
 import { Ship } from "./ship";
 
 const Player = (name) => {
@@ -16,7 +15,6 @@ const Player = (name) => {
   const patrol = Ship(2, "patrol");
 
   const ships = [carrier, battleship, destroyer, submarine, patrol];
-  // const ships = [submarine];
 
   const getShips = () => {
     return ships;

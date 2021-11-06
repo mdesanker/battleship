@@ -13,9 +13,6 @@ import {
 
 const DisplayController = (() => {
   // Create player objects
-  // const playerName = prompt("Enter your name:");
-  // const player = Player(playerName);
-
   const player = Player("Player 1");
   const computer = Player("Computer");
 
@@ -24,7 +21,6 @@ const DisplayController = (() => {
   const computerBoard = Gameboard();
 
   // Place ships randomly on both boards
-  // playerBoard.placeShipsRandom(player.getShips());
   computerBoard.placeShipsRandom(computer.getShips());
 
   // Place player ships manually
@@ -36,13 +32,12 @@ const DisplayController = (() => {
   const randomBtn = document.querySelector(".random");
   const finishBtn = document.querySelector(".finished");
 
-  const shipsRemaining = player.getShips();
-
   // Functions
   const togglePlacementModal = () => {
     placementModal.classList.toggle("hide");
   };
 
+  // Ship placement counter
   let i = 0;
   shipDetails.textContent = `Click to place ${player
     .getShips()
@@ -50,7 +45,6 @@ const DisplayController = (() => {
 
   // Event Listeners
   finishBtn.addEventListener("click", () => {
-    console.log("FINISHED");
     if (playerBoard.shipsOnBoard() === 5) {
       togglePlacementModal();
       i = 0;
@@ -81,8 +75,6 @@ const DisplayController = (() => {
       Number.parseInt(e.target.dataset.col),
       Number.parseInt(e.target.dataset.row),
     ];
-    console.log(dirToggle.checked);
-    console.log(dirToggle.value);
     if (i < player.getShips().length) {
       // Place next ship in list on player board
       playerBoard.placeShip(
@@ -139,7 +131,6 @@ const DisplayController = (() => {
       }
     }
 
-    // Set 1 second timer on computer attack to make it seem more realistic
     if (!gameIsOver) {
       setTimeout(function () {
         playerBoard.computerAttack();
@@ -149,7 +140,7 @@ const DisplayController = (() => {
           winner.textContent = `${computer.getName()}`;
           toggleGameOverModal();
         }
-      }, 100);
+      }, 500);
     }
   });
 
